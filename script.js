@@ -21,7 +21,7 @@ function inputOutput() {
   const cashGiven = parseInt(cash.value);
 
   // validation if anyof the input field is empty it would so error
-  if (billAmount.value !== "" || cash.value !== "") {
+  if (billAmount.value !== "" && cash.value !== "") {
     calculateReturnAmount(billAmountInput, cashGiven);
   } else {
     message("Enter the Value");
@@ -52,8 +52,15 @@ function processing(returnCash) {
   }
 }
 
+function handleTableRow() {
+  for (let i = 0; i < availableNotes.length; i++) {
+    numberOfNotes[i].innerHTML = "";
+  }
+}
+
 // function to print error message
 function message(mssg) {
   messages.style.display = "block";
   messages.innerHTML = mssg;
+  handleTableRow();
 }
